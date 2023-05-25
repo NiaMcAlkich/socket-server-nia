@@ -34,7 +34,7 @@ io.on("connection", (socket) => {
     console.log("click", payloadAsString);
     io.emit("someoneClicked", payloadAsString);
   });
-  
+
   socket.on("resetClicks", () => {
     clickCount = 0;
     const whoClicked = nameMap.get(socket.id);
