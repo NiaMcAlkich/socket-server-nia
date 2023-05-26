@@ -19,11 +19,11 @@ io.on("connection", (socket) => {
   //Sets up a map object for taking in the names
   let nameMap = new Map();
 
-  //Method when getName message is emmitted the user
+  //Method when getFriendlyName message is emmitted the user
   //sends over the name they want set and pairs it to 
   //their user id in the map
-  socket.on("getName", (name) => {
-    nameMap.set(socket.id, name);
+  socket.on("getFriendlyName", (friendlyName) => {
+    nameMap.set(socket.id, friendlyName);
   });
 
   //Method so when the user clicks the play button it will 
@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
     const payloadAsString = JSON.stringify(payload, (key, value) => {
 
       //If statement to see if a name was input and if not return undefined
-      if (key === "name") {
+      if (key === "friendlyName") {
         return undefined;
       }
       return value;
@@ -75,7 +75,7 @@ io.on("connection", (socket) => {
     //Again makes payload a string and checks for if a name is input in the map 
     //then returns a name or undefined if no value
     const payloadAsString = JSON.stringify(payload, (key, value) => {
-      if (key === "name") {
+      if (key === "friendlyName") {
         return undefined;
       }
       return value;
