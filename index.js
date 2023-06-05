@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
     const whoClicked = nameMap.get(socket.id);
     const payload = {
       totalClicks: clickCount,
-      whoClicked: whoClicked
+      whoClicked: whoClicked ?? socket.id
     };
 
     //Variable to make payload a string because it's easier for json objcts
@@ -69,7 +69,7 @@ io.on("connection", (socket) => {
     const whoClicked = nameMap.get(socket.id);
     const payload = {
       totalClicks: clickCount,
-      whoClicked: whoClicked
+      whoClicked: whoClicked ?? socket.id
     };
 
     //Again makes payload a string and checks for if a name is input in the map 
